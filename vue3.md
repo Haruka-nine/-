@@ -391,6 +391,18 @@ Vue3，p是直接建立对应的get，set，deleteProperty函数，对应修改�
   
   如果监视的是对象时，oldValues都是没用的
   ```
+  
+  想要监视一个对象的其中一个属性时，因为其不是ref或者reative对象，不能监视，需要写成函数
+  
+  ```
+  ()=>person.job
+  ```
+  
+  
+
+
+
+
 
 ### 3.watchEffect函数
 
@@ -454,12 +466,28 @@ Vue3，p是直接建立对应的get，set，deleteProperty函数，对应修改�
 
 
 
-1
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 - Vue3.0中可以继续使用Vue2.x中的生命周期钩子，但有有两个被更名：
   - ```beforeDestroy```改名为 ```beforeUnmount```
   - ```destroyed```改名为 ```unmounted```
+  
 - Vue3.0也提供了 Composition API 形式的生命周期钩子，与Vue2.x中钩子对应关系如下：
+
+  前为配置项方式（就是不写在setup里，和Vue2写法一样的）
+
   - `beforeCreate`===>`setup()`
   - `created`=======>`setup()`
   - `beforeMount` ===>`onBeforeMount`
@@ -487,6 +515,7 @@ Vue3，p是直接建立对应的get，set，deleteProperty函数，对应修改�
 
 
 - 扩展：```toRefs``` 与```toRef```功能一致，但可以批量创建多个 ref 对象，语法：```toRefs(person)```
+- toRefs返回的是一个对象，其中属性是对应的ref对象，可以直接在return中用 ```...toRefs(person)```将其拆开
 
 
 # 三、其它 Composition API
@@ -516,6 +545,7 @@ Vue3，p是直接建立对应的get，set，deleteProperty函数，对应修改�
   - 应用场景:
     1. 有些值不应被设置为响应式的，例如复杂的第三方类库等。
     2. 当渲染具有不可变数据源的大列表时，跳过响应式转换可以提高性能。
+  - 与readonly不同的是，readonly根本不让你改，但这个其实是改了，但Vue因为没有响应式所以没有检测到
 
 ## 4.customRef
 
@@ -595,8 +625,10 @@ Vue3，p是直接建立对应的get，set，deleteProperty函数，对应修改�
          const car = inject('car')
          return {car}
      	......
-     }
+     
      ```
+
+这里后代收到的组件不能用toRefs或者toRef进行ref转换，识别不到对象内的数据
 
 ## 6.响应式数据的判断
 
