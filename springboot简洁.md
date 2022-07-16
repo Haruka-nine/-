@@ -12,14 +12,14 @@
 
 可以在maven中配置
 
-```
+```xml
 <properties>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
 </properties>
 ```
 
-```
+```xml
 <!--创建一个父工程，相当于导入了springboot-->
 <parent>
     <groupId>org.springframework.boot</groupId>
@@ -37,7 +37,7 @@
 
 ### 创建主程序
 
-```
+```java
 @SpringBootApplication
 public class MainApplication {
     public static void main(String[] args) {
@@ -48,7 +48,7 @@ public class MainApplication {
 
 ### 编写业务
 
-```
+```java
 @RestController //这个相当于ResponseBody和Controller的合体  ResponseBody表示返回的是字符
 public class HelloController {
     @RequestMapping("/hello")
@@ -72,7 +72,7 @@ server.port=8888
 
 ### 简化部署
 
-```
+```xml
 设置打包方式为jar包，然后引入打包插件，注意版本号和springboot版本号一致
 点击打包就可以打包成jar包，把jar包部署到服务器就可以直接运行
 <build>
@@ -92,7 +92,7 @@ server.port=8888
 
 父项目的父项目中有来进行依赖管理
 
-```
+```xml
 依赖管理    
 <parent>
         <groupId>org.springframework.boot</groupId>
@@ -119,7 +119,7 @@ server.port=8888
 
 如果我们想要修改版本号
 
-```
+```xml
 1、查看spring-boot-dependencies里面规定当前依赖的版本 用的 key。
 2、在当前项目里面重写配置
     <properties>
@@ -129,7 +129,7 @@ server.port=8888
 
 开发导入starter场景启动器
 
-```
+```xml
 1、见到很多 spring-boot-starter-* ： *就某种场景
 2、只要引入starter，这个场景的所有常规需要的依赖我们都自动引入
 3、SpringBoot所有支持的场景都可以在这个文档中找到
@@ -152,7 +152,7 @@ https://docs.spring.io/spring-boot/docs/current/reference/html/using-spring-boot
 
   - 配置Tomcat
 
-    ```
+    ```xml
     <dependency>
           <groupId>org.springframework.boot</groupId>
           <artifactId>spring-boot-starter-tomcat</artifactId>
@@ -216,7 +216,7 @@ https://docs.spring.io/spring-boot/docs/current/reference/html/using-spring-boot
 - - - 配置 类组件之间无依赖关系用Lite模式加速容器启动过程，减少判断
     - 配置类组件之间有依赖关系，方法会被调用得到之前单实例组件，用Full模式
 
-```
+```java
 #############################Configuration使用示例######################################################
 /**
  * 1、配置类里面使用@Bean标注在方法上给容器注册组件，默认也是单实例的
@@ -310,7 +310,7 @@ public class MainApplication {
 
 ### @ComponentScan、@Import
 
-```
+```java
 4、@Import({User.class, DBHelper.class})
  *      给容器中自动创建出这两个类型的组件、默认组件的名字就是全类名
  *
@@ -330,7 +330,7 @@ public class MyConfig {
 
 注意和装配的顺序有关
 
-```
+```java
 =====================测试条件装配==========================
 @Configuration(proxyBeanMethods = false) //告诉SpringBoot这是一个配置类 == 配置文件
 //@ConditionalOnBean(name = "tom")
@@ -386,7 +386,7 @@ public static void main(String[] args) {
 
 可以在任意一个配置类上写这个注解
 
-```
+```java
 @ImportResource("classpath:beans.xml")
 public class MyConfig {}
 
@@ -405,7 +405,7 @@ public class MyConfig {}
 
 ### @ConfigurationProperties
 
-```
+```java
 /**
  * 只有在容器中的组件，才会拥有SpringBoot提供的强大功能
  */
@@ -608,7 +608,7 @@ SpringBoot默认会在底层配好所有的组件。但是如果用户自己配�
 idea中搜索安装lombok插件
 ```
 
-```
+```java
 ===============================简化JavaBean开发===================================
 @NoArgsConstructor
 //@AllArgsConstructor  //无参和有参构造器
@@ -648,7 +648,7 @@ public class HelloController {
 
 ### dev-tools
 
-```
+```xml
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
@@ -730,7 +730,7 @@ YAML 是 "YAML Ain't Markup Language"（YAML 不是一种标记语言）的递�
 
   #### 实例
 
-  ````
+  ````java
   @Data
   public class Person {
   	
@@ -753,7 +753,7 @@ YAML 是 "YAML Ain't Markup Language"（YAML 不是一种标记语言）的递�
   }
   ````
 
-  ```
+  ```yaml
   # yaml表示以上对象
   person:
     userName: zhangsan
@@ -790,7 +790,7 @@ YAML 是 "YAML Ain't Markup Language"（YAML 不是一种标记语言）的递�
 
 我们使用注释处理器，只需要在maven中配置就可以
 
-```
+```xml
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-configuration-processor</artifactId>
@@ -841,7 +841,7 @@ YAML 是 "YAML Ain't Markup Language"（YAML 不是一种标记语言）的递�
 
 改变默认的静态资源路径
 
-```
+```yaml
 spring:
   mvc:
     static-path-pattern: /res/**
@@ -866,7 +866,7 @@ https://www.webjars.org/
 
 假如需要jQuery
 
-```
+```xml
 
         <dependency>
             <groupId>org.webjars</groupId>
@@ -879,7 +879,7 @@ https://www.webjars.org/
 
 访问地址：[http://localhost:8080/webjars/**jquery/3.5.1/jquery.js**](http://localhost:8080/webjars/jquery/3.5.1/jquery.js)   后面地址要按照依赖里面的包路径
 
-```
+```yaml
 spring:
 #  mvc:
 #    static-path-pattern: /res/**
@@ -897,7 +897,7 @@ spring:
 - - 可以配置静态资源路径
   - 但是不可以配置静态资源的访问前缀。否则导致 index.html不能被默认访问
 
-```
+```yaml
 spring:
 #  mvc:
 #    static-path-pattern: /res/**   这个会导致welcome page功能失效
@@ -910,7 +910,7 @@ spring:
 
 ### 自定义 `Favicon`
 
-```
+```yaml
 spring:
 #  mvc:
 #    static-path-pattern: /res/**   这个会导致 Favicon 功能失效
@@ -932,7 +932,7 @@ spring:
 
 - - 扩展：如何把_method 这个名字换成我们自己喜欢的。
 
-```
+```java
     @RequestMapping(value = "/user",method = RequestMethod.GET)
     public String getUser(){
         return "GET-张三";
@@ -1025,7 +1025,7 @@ defaultValue：不管required属性值为true或false，当value所指定的请�
 
 
 
-```
+```java
 @RestController
 public class ParameterTestController {
 

@@ -723,7 +723,7 @@ Vue3，p是直接建立对应的get，set，deleteProperty函数，对应修改�
     const Child = defineAsyncComponent(()=>import('./components/Child.vue'))
     ```
 
-  - 使用```Suspense```包裹组件，并配置好```default``` 与 ```fallback```
+  - 使用```Suspense```包裹组件，并配置好```default``` 与 ```fallback```（告诉用户没有加载出来时这里有东西）
 
     ```vue
     <template>

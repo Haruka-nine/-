@@ -31,7 +31,7 @@ h1{
 作用：根据元素的class属性值选中一组元素
 语法：.class属性值
 
-```
+```css
 .blue{
     color: blue;
     }
@@ -41,7 +41,7 @@ h1{
 
 选中所有元素
 
-```
+```css
 *{
     color: red;
 }
@@ -53,7 +53,7 @@ h1{
 
 连着写的常用选择器会形成and关系（一定要连着写）
 
-```
+```css
 div.red{
     font-size: 30px;
 }
@@ -64,7 +64,7 @@ div.red{
 
 逗号隔开的则时或的关系
 
-```
+```css
 h1, span{
     color: green
 } //满足h1或span就赋予这属性
@@ -79,7 +79,7 @@ h1, span{
 作用：选中指定父元素的指定子元素
 语法：父元素 > 子元素
 
-```
+```css
 div.box > span{
     color: orange;
     } //选中一个类名为box的div元素的span子元素 但必须为直接儿子，不能为后代
@@ -90,7 +90,7 @@ div.box > span{
 作用：选中指定元素内的指定后代元素
 语法：祖先 后代
 
-```
+```css
 div span{
     color: skyblue
     }
@@ -100,7 +100,7 @@ div span{
 
 ### 兄弟元素选择器
 
-```
+```css
 p + span{
     color: red;
 } //p标签的前一个兄弟span
@@ -121,7 +121,7 @@ p ~ span{
 [属性名$=属性值] 选择属性值以指定值结尾的元素
 [属性名*=属性值] 选择属性值中含有某值的元素的元素
 
-```
+```css
 p[title*=e]{
     color: orange;
 }
@@ -153,7 +153,7 @@ p[title*=e]{
 - 将符合条件的元素从选择器中去除
 ```
 
-```
+```css
 ul > li:first-of-type{
     color: red;
 }
@@ -163,7 +163,7 @@ ul > li:first-of-type{
 
 而下边的代码则是选中ul的第一个元素，在选择li
 
-```
+```css
 ul >li:first-child{
     color: red;
 }
@@ -173,7 +173,7 @@ ul >li:first-child{
 
 ## a标签伪类
 
-```
+```css
 :link 用来表示没访问过的链接（正常的链接）
 a:link{
             color: red;
@@ -181,7 +181,7 @@ a:link{
         }
 ```
 
-```
+```css
 /* 
     :visited 用来表示访问过的链接
     由于隐私的原因，所以visited这个伪类只能修改链接的颜色
@@ -192,7 +192,7 @@ a:visited{
 }
 ```
 
-```
+```css
 /* 
     :hover 用来表示鼠标移入的状态
  */
@@ -202,7 +202,7 @@ a:visited{
  }
 ```
 
-```
+```css
 /*
    :active 用来表示鼠标点击
 */
@@ -218,7 +218,7 @@ a:active{
 
 伪元素，表示页面中一些特殊的并不真实的存在的元素（特殊的位置）
 
-```
+```css
 伪元素使用 :: 开头
 
 ::first-letter 表示第一个字母
@@ -294,7 +294,7 @@ a:active{
 
 ## 颜色
 
-```
+```css
 .box1{
     width: 100px;
     height: 100px;
@@ -385,7 +385,7 @@ a:active{
             边框（border）
             外边距（margin）
 
-```
+```css
 .box1{
     /* 
         内容区（content），元素中的所有的子元素和文本内容都在内容区中排列  
@@ -414,7 +414,7 @@ a:active{
 
 ### 边框
 
-```
+```css
 .box1{
     width: 200px;
     height: 200px;
@@ -500,7 +500,7 @@ a:active{
 
 ### 内边距
 
-```
+```css
 .box1{
     width: 200px;
     height: 200px;
@@ -550,7 +550,7 @@ a:active{
 
 ### 外边距
 
-```
+```css
 .box1{
     width: 200px;
     height: 200px;
@@ -600,7 +600,7 @@ a:active{
 
 ### 水平布局
 
-```
+```css
 .inner{
             /* width: auto;  width的值默认就是auto*/
             width: 200px;
@@ -665,7 +665,7 @@ margin-left+border-left+padding-left+width+padding-right+border-right+margin-rig
 
 ### 垂直布局（overflow）
 
-```
+```css
 /*
 如果没有设置父元素的高度
 默认情况下，父元素的高度被内容撑开
@@ -749,7 +749,7 @@ margin-left+border-left+padding-left+width+padding-right+border-right+margin-rig
 
 ### 默认样式
 
-```
+```css
 /* 
     默认样式：
         - 通常情况，浏览器都会为元素设置一些默认样式
@@ -769,7 +769,7 @@ margin-left+border-left+padding-left+width+padding-right+border-right+margin-rig
 
 ### 盒子的大小
 
-```
+```css
 .box1{
     width: 100px;
     height: 100px;
@@ -794,7 +794,7 @@ margin-left+border-left+padding-left+width+padding-right+border-right+margin-rig
 
 轮廓不会影响布局，只会产生显示效果
 
-```
+```css
 .box1{
             width: 200px;
             height: 200px;
@@ -824,7 +824,7 @@ margin-left+border-left+padding-left+width+padding-right+border-right+margin-rig
 
 ### 圆角
 
-```
+```css
 .box2{
     width: 200px;
     height: 200px;
@@ -855,7 +855,7 @@ margin-left+border-left+padding-left+width+padding-right+border-right+margin-rig
 
 ### 基本内容
 
-```
+```css
 .box1{
     width: 400px;
     height: 200px;
@@ -914,7 +914,7 @@ margin-left+border-left+padding-left+width+padding-right+border-right+margin-rig
 
 ### 高度塌陷问题
 
-```
+```css
 .outer{
     border: 10px red solid;
 
@@ -979,7 +979,7 @@ clear
 
 ### :after解决塌陷（最终方案）
 
-```
+```css
 .box1::after{
     content: '';
     display: block;
@@ -992,7 +992,7 @@ clear
 
 ### 解决外边距重叠和高度塌陷
 
-```
+```css
 .clearfix::before,
 .clearfix::after{
     content: '';
@@ -1310,7 +1310,7 @@ vertical-align 设置元素垂直对齐的方式
 */
 ```
 
-```
+```css
 /* 
     white-space 设置网页如何处理空白
         可选值：
@@ -1329,7 +1329,7 @@ text-overflow: ellipsis;
 
 ## 背景
 
-```
+```css
 .box1{
     width: 500px;
     height: 500px;
@@ -1375,7 +1375,7 @@ text-overflow: ellipsis;
 }
 ```
 
-```
+```css
 .box1{
     width: 500px;
     height: 500px;
@@ -1442,7 +1442,7 @@ text-overflow: ellipsis;
 }
 ```
 
-```
+```css
 /* 
 background-attachment
     - 背景图片是否跟随元素移动
@@ -1454,7 +1454,7 @@ background-attachment
 
 ### 渐变
 
-```
+```css
 .box1{
     width: 200px;
     height: 200px;
@@ -1490,7 +1490,7 @@ background-attachment
 
 ### 径向渐变
 
-```
+```css
 .box1{
             width: 300px;
             height: 300px;
@@ -1529,7 +1529,7 @@ background-attachment
 
 ## 过渡
 
-```
+```css
 .box2{
     background-color: #bfa;
     /* margin-left: auto; */
@@ -1589,7 +1589,7 @@ background-attachment
 
 ## 动画
 
-```
+```css
 /* 
 动画
     动画和过渡类似，都是可以实现一些动态的效果，
@@ -1613,7 +1613,7 @@ background-attachment
 }
 ```
 
-```
+```css
 .box2{
     background-color: #bfa;
     
@@ -1716,7 +1716,7 @@ transform: skew(-11deg);
 
 ### 旋转
 
-```
+```css
 /*
     通过旋转可以使元素沿着x y 或 z旋转指定的角度
         rotateX()
@@ -1730,7 +1730,7 @@ transform: skew(-11deg);
 
 ### 缩放
 
-```
+```css
 .box1:hover{
     /* 
         对元素进行缩放的函数：
@@ -1744,7 +1744,7 @@ transform: skew(-11deg);
 
 ## less
 
-```
+```css
 <!-- 
     less是一门css的预处理语言
         - less是一个css的增强版，通过less可以编写更少的代码实现更强大的样式

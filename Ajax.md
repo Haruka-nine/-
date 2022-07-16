@@ -72,7 +72,7 @@ Ajax可以在浏览器中向服务器发送请求:即无刷新获取数据
 
 4. 体 
 
-   ``` 
+   ``` html
    <html lang="en">
    <head>
        <meta charset="UTF-8">
@@ -94,33 +94,33 @@ Ajax可以在浏览器中向服务器发送请求:即无刷新获取数据
 
    1. 设置npm包管理工具初始化
 
-      ```
+      ```shell
       npm init --yes
       ```
 
    2. 在当前的包下安装express
 
-      ```
+      ```shell
       npm i express
       ```
 
       
 
-   1. 引入express
+   3. 引入express
 
-      ```
+      ```js
       const express = require('express')
       ```
    
    2. 创建应用对象
 
-      ```
+      ```js
       const app = express
       ```
    
    3. 创建路由规则
 
-      ```
+      ```js
       //request是对请求报文的封装
       //response是对响应报文的封装
       app.get('/',(request,response)=>{
@@ -133,7 +133,7 @@ Ajax可以在浏览器中向服务器发送请求:即无刷新获取数据
    
    4. 监听端口启动服务
 
-      ```
+      ```js
       app.listen(8000,()=>{
       console.log("服务已经启动，8000端口监听中");
       })
@@ -204,7 +204,7 @@ http://localhost:8000/server?a=100&b=200&c=300
 
 在xhr.send()中设置参数
 
-```
+```js
 xhr.send('a=100&b=200&c=300'); 
 或者
 xhr.send('a:100&b:200&c:300');
@@ -217,7 +217,7 @@ xhr.send('a:100&b:200&c:300');
 
 在open方法后使用
 
-```
+```js
 xhr.setRequestHeader()设置请求头信息
 例如：
 xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded')
@@ -233,20 +233,20 @@ xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded')
 
 需要在服务器将响应回的json对象数据转化为字符串
 
-```
+```js
 let str = JSON.stringify(data)
 response.send(str)
 ```
 
 浏览器接收到json字符串数据我们需要将其转化为json数据
 
-1. ```
+1. ```js
    //手动转化
    let data = JSON.parse(xhr.response)
    data就是传回来的json数据
    ```
 
-2. ``` 
+2. ``` js
    //自动转化
    //在xhr.open（）前添加响应数据类型
    xhr.responseType='json'
@@ -259,7 +259,7 @@ response.send(str)
 
 全局安装：
 
-```
+```js
 npm install -g nodemon
 ```
 
@@ -279,7 +279,7 @@ ie浏览器会对浏览器请求的数据进行缓存，就导致服务器的数
 
 解决方法：在请求的url后添加时间戳，使每次请求都不一样
 
-```
+```js
 xhr.open('GET','http://localhost:8000/ie?t='+Date.now())
 ```
 
@@ -339,7 +339,7 @@ xhr.abort()就可以需要掉这个请求
 
 我们在多次请求时可以判断前边是否有相同请求，如果有就把前面的请求取消掉
 
-```
+```js
 let xhr = null
         //标识变量
         let isSending = false //是否正在发送AJAX请求
@@ -396,7 +396,7 @@ $('button').eq(1).click(function () {
 
 ### 通用型方法ajax
 
-```
+```js
         $('button').eq(2).click(function () {
           $.ajax({
               //url
@@ -433,7 +433,7 @@ $('button').eq(1).click(function () {
 
 首先axios可以配置自己的baseURL
 
-```
+```js
 axios.defaults.baseURL ='http://localhost:8000'
 ```
 
@@ -463,7 +463,7 @@ btns[0].onclick=function () {
 
 ### post
 
-```
+```js
 btns[1].onclick=function () {
             //POST请求 //第二个参数是请求体 ，第三个参数才是配置
             axios.post('/axios-server',{
@@ -490,7 +490,7 @@ btns[1].onclick=function () {
 
 ### AJAX
 
-```
+```js
 btns[2].onclick=function () {
             axios({
                 method:'POST',
@@ -523,7 +523,7 @@ btns[2].onclick=function () {
 
 fetch获取数据需要调用两次then
 
-```
+```js
 btn.onclick=function () {
             //fetch接收两个参数 第一个是url，第二个为配置项
             fetch('http://localhost:8000/fetch-server',{
@@ -563,7 +563,7 @@ AJAX在请求时是默认遵循同源策略的
 
 ### JQuery完成jsonp请求
 
-```
+```js
 $.getJSON('http://localhost:8000/jquery-jsonp-server?callback=?',function (data) {
                 $('#result').html(`
                 名称:${data.name}
@@ -576,7 +576,7 @@ $.getJSON('http://localhost:8000/jquery-jsonp-server?callback=?',function (data)
 
 在返回结果时使用 
 
-```
+```js
 response.end(`${cb}(${str})`)
 ```
 
@@ -586,16 +586,16 @@ response.end(`${cb}(${str})`)
 
 服务器设置允许跨域响应头
 
-```
+```js
 response.setHeader('Access-Control-Allow-Origin','*')//这是允许所有网页
 //如果对某个网页就将*换为网页的url
 ```
 
-```
+```js
 response.setHeader('Access-Control-Allow-Methods','*')//允许其他请求方法
 ```
 
-```
+```js
 response.setHeader('Access-Control-Allow-Headers','*')//允许自定义头信息
 ```
 
